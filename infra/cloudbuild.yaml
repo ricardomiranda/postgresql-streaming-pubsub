@@ -1,0 +1,76 @@
+
+steps:
+  - name: gcr.io/cloud-builders/gcloud
+    volumes:
+      - name: 'secret'
+        path: /secret
+    entrypoint: 'bash'
+    args: [ 
+      './infra/pulumi_token.sh', 
+      '-s=PULUMI_SERVICE_ACCOUNT_TOKEN',
+      '-t=/secret/datapool-prt-dsi-dev.json'
+      ]
+    id: 'get-secret-from-secret-manager'
+
+  - name: 'gcr.io/${_PROJECT}/pulumi-prt'
+    entrypoint: /bin/sh
+    args:
+      [
+        '-c',
+        'chmod +x ./infra/pulumi.sh',
+      ]
+    id: 'set-pulumi-scrpt-to-executable'
+
+  - name: 'gcr.io/${_PROJECT}/pulumi-prt'
+    volumes:
+      - name: 'secret'
+        path: /secret
+    entrypoint: 'bash'
+    args:
+      [
+        './infra/pulumi.sh',
+        '-b=${_BUILD_TYPE}',
+        '-p=${_PROJECT}',
+        '-s=${_STACK}-${_PROJECT_DEPLOY}',
+      ]
+    env:
+      [
+        # 'GOOGLE_CREDENTIALS=/secret/datapool-prt-dsi-dev.json',
+        '_ENV=${_ENV}',
+        '_LOCATION=${_LOCATION}',
+        '_NAME=${_NAME}',
+        '_PG_CUSTOMERS=${_PG_CUSTOMERS}',
+        '_PG_GEOGRAPHY_COLUMNS=${_PG_GEOGRAPHY_COLUMNS}',
+        '_PG_GEOM=${_PG_GEOM}',
+        '_PG_GEOMETRY_COLUMNS=${_PG_GEOMETRY_COLUMNS}',
+        '_PG_ORDERS=${_PG_ORDERS}',
+        '_PG_PRODUCTS=${_PG_PRODUCTS}',
+        '_PG_PRODUCTS_ON_HAND=${_PG_PRODUCTS_ON_HAND}',
+        '_PG_RASTER_COLUMNS=${_PG_RASTER_COLUMNS}',
+        '_PG_RASTER_OVERVIEWS=${_PG_RASTER_OVERVIEWS}',
+        '_PG_SPATIAL_REF_SYS=${_PG_SPATIAL_REF_SYS}',
+        '_PROJECT=${_PROJECT}',
+        '_PROJECT_DEPLOY=${_PROJECT_DEPLOY}',
+        '_SUFFIX=${_SUFFIX}',
+      ]
+    id: 'call-pulumi'
+
+substitutions:
+  _BUILD_TYPE: preview
+  _ENV: dev
+  _LOCATION: europe-west3
+  _NAME: pg_debezium_pubsub
+  _PG_CUSTOMERS: db-inventory.inventory.customers
+  _PG_GEOGRAPHY_COLUMNS: db-inventory.inventory.geography_columns
+  _PG_GEOM: db-inventory.inventory.geom
+  _PG_GEOMETRY_COLUMNS: db-inventory.inventory.geometry_columns
+  _PG_ORDERS: db-inventory.inventory.orders
+  _PG_PRODUCTS: db-inventory.inventory.products
+  _PG_PRODUCTS_ON_HAND: db-inventory.inventory.products_on_hand
+  _PG_RASTER_COLUMNS: db-inventory.inventory.raster_columns
+  _PG_RASTER_OVERVIEWS: db-inventory.inventory.raster_overviews
+  _PG_SPATIAL_REF_SYS: db-inventory.inventory.spatial_ref_sys
+  _PROJECT: ${PROJECT_ID}
+  _PROJECT_DEPLOY: ${PROJECT_ID}
+  _STACK: pg-debezium-pubsub
+  _SUFFIX: ${PROJECT_ID}
