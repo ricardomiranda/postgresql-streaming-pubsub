@@ -7,7 +7,7 @@ setuptools.setup(
     name="PostgerSQL-Debezium-Pub/Sub",
     version="0.3.1",
     author="Ricardo Miranda",
-    author_email="ricardoMiranda.partner@auchan.pt",
+    author_email="mail@ricardoMiranda.com",
     description="PoC for CDC",
     long_description=long_description,
     long_description_content_type="text/markdown",

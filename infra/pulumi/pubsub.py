@@ -56,7 +56,7 @@ def _parse_env_vars() -> dict:
 def main(
     env: str,
     project: str,
-    project_auchan: str,
+    project_name: str,
     project_deploy: str
 ) -> None:
     print('INFO: infra.pulumi.pubsub.main')
@@ -69,14 +69,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_customers'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
         },
         name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_customers']),
+            n=project_name, t=env_vars['pg_customers']),
         project=project_deploy,
         resource_name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_customers'])
+            n=project_name, t=env_vars['pg_customers'])
     )
 
     t_pg_geography_columns = pubsub.Topic(
@@ -84,14 +84,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_geography_columns'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
         },
         name='{n}-{t}'.format(
-            n=project_auchan, t=env_vars['pg_geography_columns']),
+            n=project_name, t=env_vars['pg_geography_columns']),
         project=project_deploy,
         resource_name='{n}-{t}'.format(
-            n=project_auchan, t=env_vars['pg_geography_columns'])
+            n=project_name, t=env_vars['pg_geography_columns'])
     )
 
     t_pg_geom = pubsub.Topic(
@@ -99,14 +99,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_geom'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
         },
         name='{n}-{t}'.format(
-            n=project_auchan, t=env_vars['pg_geom']),
+            n=project_name, t=env_vars['pg_geom']),
         project=project_deploy,
         resource_name='{n}-{t}'.format(
-            n=project_auchan, t=env_vars['pg_geom'])
+            n=project_name, t=env_vars['pg_geom'])
     )
 
     t_pg_geometry_columns = pubsub.Topic(
@@ -114,14 +114,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_geometry_columns'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
         },
         name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_geometry_columns']),
+            n=project_name, t=env_vars['pg_geometry_columns']),
         project=project_deploy,
         resource_name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_geometry_columns'])
+            n=project_name, t=env_vars['pg_geometry_columns'])
     )
 
     t_pg_orders = pubsub.Topic(
@@ -129,14 +129,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_orders'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
         },
         name='{n}-{t}'.format(
-            n=project_auchan, t=env_vars['pg_orders']),
+            n=project_name, t=env_vars['pg_orders']),
         project=project_deploy,
         resource_name='{n}-{t}'.format(
-            n=project_auchan, t=env_vars['pg_orders'])
+            n=project_name, t=env_vars['pg_orders'])
     )
 
     t_pg_products = pubsub.Topic(
@@ -144,14 +144,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_products'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
         },
         name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_products']),
+            n=project_name, t=env_vars['pg_products']),
         project=project_deploy,
         resource_name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_products'])
+            n=project_name, t=env_vars['pg_products'])
     )
 
     t_pg_products_on_hand = pubsub.Topic(
@@ -159,14 +159,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_products_on_hand'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
         },
         name='{n}-{t}'.format(
-            n=project_auchan, t=env_vars['pg_products_on_hand']),
+            n=project_name, t=env_vars['pg_products_on_hand']),
         project=project_deploy,
         resource_name='{n}-{t}'.format(
-            n=project_auchan, t=env_vars['pg_products_on_hand'])
+            n=project_name, t=env_vars['pg_products_on_hand'])
     )
 
     t_pg_raster_columns = pubsub.Topic(
@@ -174,14 +174,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_raster_columns'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
         },
         name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_raster_columns']),
+            n=project_name, t=env_vars['pg_raster_columns']),
         project=project_deploy,
         resource_name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_raster_columns'])
+            n=project_name, t=env_vars['pg_raster_columns'])
     )
 
     t_pg_raster_overviews = pubsub.Topic(
@@ -189,14 +189,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_raster_overviews'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
         },
         name='{n}-{t}'.format(
-            n=project_auchan, t=env_vars['pg_raster_overviews']),
+            n=project_name, t=env_vars['pg_raster_overviews']),
         project=project_deploy,
         resource_name='{n}-{t}'.format(
-            n=project_auchan, t=env_vars['pg_raster_overviews'])
+            n=project_name, t=env_vars['pg_raster_overviews'])
     )
 
     t_pg_spatial_ref_sys = pubsub.Topic(
@@ -204,14 +204,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_spatial_ref_sys'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
         },
         name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_spatial_ref_sys']),
+            n=project_name, t=env_vars['pg_spatial_ref_sys']),
         project=project_deploy,
         resource_name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_spatial_ref_sys'])
+            n=project_name, t=env_vars['pg_spatial_ref_sys'])
     )
 
     # Subscriptions
@@ -222,14 +222,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_customers'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
        },
         name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_customers']),
+            n=project_name, t=env_vars['pg_customers']),
         project=project_deploy,
         resource_name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_customers'])
+            n=project_name, t=env_vars['pg_customers'])
     )
 
     s_pg_geography_columns = pubsub.Subscription(
@@ -239,14 +239,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_geography_columns'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
        },
         name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_geography_columns']),
+            n=project_name, t=env_vars['pg_geography_columns']),
         project=project_deploy,
         resource_name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_geography_columns'])
+            n=project_name, t=env_vars['pg_geography_columns'])
     )
 
     s_pg_geom = pubsub.Subscription(
@@ -256,14 +256,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_geom'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
        },
         name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_geom']),
+            n=project_name, t=env_vars['pg_geom']),
         project=project_deploy,
         resource_name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_geom'])
+            n=project_name, t=env_vars['pg_geom'])
     )
 
     s_pg_geometry_columns = pubsub.Subscription(
@@ -273,14 +273,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_geometry_columns'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
        },
         name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_geometry_columns']),
+            n=project_name, t=env_vars['pg_geometry_columns']),
         project=project_deploy,
         resource_name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_geometry_columns'])
+            n=project_name, t=env_vars['pg_geometry_columns'])
     )
 
     s_pg_products = pubsub.Subscription(
@@ -290,14 +290,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_products'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
        },
         name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_products']),
+            n=project_name, t=env_vars['pg_products']),
         project=project_deploy,
         resource_name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_products'])
+            n=project_name, t=env_vars['pg_products'])
     )
 
     s_pg_orders = pubsub.Subscription(
@@ -307,14 +307,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_orders'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
        },
         name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_orders']),
+            n=project_name, t=env_vars['pg_orders']),
         project=project_deploy,
         resource_name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_orders'])
+            n=project_name, t=env_vars['pg_orders'])
     )
 
     s_pg_products_on_hand = pubsub.Subscription(
@@ -324,14 +324,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_products_on_hand'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
        },
         name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_products_on_hand']),
+            n=project_name, t=env_vars['pg_products_on_hand']),
         project=project_deploy,
         resource_name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_products_on_hand'])
+            n=project_name, t=env_vars['pg_products_on_hand'])
     )
 
     s_pg_raster_columns = pubsub.Subscription(
@@ -341,14 +341,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_raster_columns'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
        },
         name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_raster_columns']),
+            n=project_name, t=env_vars['pg_raster_columns']),
         project=project_deploy,
         resource_name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_raster_columns'])
+            n=project_name, t=env_vars['pg_raster_columns'])
     )
 
     s_pg_raster_overviews = pubsub.Subscription(
@@ -358,14 +358,14 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_raster_overviews'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
        },
         name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_raster_overviews']),
+            n=project_name, t=env_vars['pg_raster_overviews']),
         project=project_deploy,
         resource_name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_raster_overviews'])
+            n=project_name, t=env_vars['pg_raster_overviews'])
     )
 
     s_pg_spatial_ref_sys = pubsub.Subscription(
@@ -375,12 +375,12 @@ def main(
             'environment': env,
             'event_source': env_vars['pg_spatial_ref_sys'],
             'project': project,
-            'project_auchan': project_auchan,
+            'project_name': project_name,
             'project_deploy': project_deploy,
        },
         name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_spatial_ref_sys']),
+            n=project_name, t=env_vars['pg_spatial_ref_sys']),
         project=project_deploy,
         resource_name='{n}-{t}-outcome'.format(
-            n=project_auchan, t=env_vars['pg_spatial_ref_sys'])
+            n=project_name, t=env_vars['pg_spatial_ref_sys'])
     )

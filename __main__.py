@@ -43,7 +43,7 @@ env_vars: dict = _parse_env_vars()
 
 # Enable services
 services.main(
-    project_auchan=env_vars['name'],
+    project_name=env_vars['name'],
     project_deploy=env_vars['project_deploy']
 )
 
@@ -51,6 +51,6 @@ services.main(
 pubsub.main(
     env=env_vars['env'],
     project=env_vars['project'],
-    project_auchan=env_vars['name'],
+    project_name=env_vars['name'],
     project_deploy=env_vars['project_deploy']
 )
